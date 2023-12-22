@@ -48,7 +48,29 @@ const addList = (id,list_item) => {
     })
 }
 
+const removeList = (id) => {
+    return db.List.deleteOne({id}).then(
+        (result)=>{
+            if(result){
+                return{
+                    status: true,
+                    statusCode: 200,
+                    message: 'Item Deleted from database'
+                }
+            }
+            else{
+                return{
+                    status:false,
+                    statusCode:404,
+                    message:"No data found"
+                }
+            }
+        }
+    )
+}
+
 module.exports = {
     allList,
-    addList
+    addList,
+    removeList
 }

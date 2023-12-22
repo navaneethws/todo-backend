@@ -31,3 +31,10 @@ server.post('/add-list',(req,res)=>{
         res.status(result.statusCode).json(result)
     })
 })
+
+server.delete('/delete-employee/:id',(req,res)=>{
+    logic.removeList(req.params.id)
+    .then((result)=>{
+        res.status(result.statusCode).json(result)
+    })
+})
