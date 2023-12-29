@@ -69,8 +69,34 @@ const removeList = (id) => {
     )
 }
 
+const updateList = (id,list_item) => {
+    return db.List.findOne({id}).then(
+        (result)=>{
+            if(result){
+                result.id=id
+                result.list_item=list_item
+
+                result.save()
+                return{
+                    status: true,
+                    statusCode:200,
+                    message:"List data updated successfully"
+                }
+            }
+            else{
+                return{
+                    status:false,
+                    statusCode:404,
+                    message:"No data found"
+                }
+            }
+        }
+    )
+}
+
 module.exports = {
     allList,
     addList,
-    removeList
+    removeList,
+    updateList
 }

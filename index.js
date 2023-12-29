@@ -38,3 +38,10 @@ server.delete('/delete-employee/:id',(req,res)=>{
         res.status(result.statusCode).json(result)
     })
 })
+
+server.post('/update-list',(req,res)=>{
+    logic.updateList(req.body.editTaskId,req.body.editTask)
+    .then((result)=>{
+        res.status(result.statusCode).json(result)
+    })
+})
